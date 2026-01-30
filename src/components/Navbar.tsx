@@ -25,9 +25,13 @@ const Navbar = () => {
     <header className="fixed top-0 left-0 right-0 z-50 bg-background border-b border-section-border">
       <div className="container flex items-center justify-between h-16">
         
-        {/* Logo - Nu klickbar länk till startsidan */}
-        <Link to="/" className="text-xl font-bold tracking-tight hover:opacity-80 transition-opacity">
-          EL I SÖDER
+        {/* Logo - Nu med bild! */}
+        <Link to="/" className="flex items-center hover:opacity-80 transition-opacity">
+          <img 
+            src="/Logga.png" 
+            alt="El i Söder" 
+            className="h-12 w-auto object-contain" 
+          />
         </Link>
 
         {/* Desktop Navigation */}
