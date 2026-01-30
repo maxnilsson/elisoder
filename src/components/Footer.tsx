@@ -22,20 +22,20 @@ const Footer = () => {
             <ul className="space-y-3">
               <li>
                 <a 
-                  href="tel:0709906399" 
+                  href="tel:0703992959" 
                   className="flex items-center gap-3 text-sm hover:text-primary transition-colors"
                 >
                   <Phone className="h-4 w-4" />
-                  0709-906399
+                  0703-992959
                 </a>
               </li>
               <li>
                 <a 
-                  href="mailto:info@elisoder.se" 
+                  href="mailto:elisoder@outlook.com" 
                   className="flex items-center gap-3 text-sm hover:text-primary transition-colors"
                 >
                   <Mail className="h-4 w-4" />
-                  info@elisoder.se
+                  elisoder@outlook.com
                 </a>
               </li>
               <li className="flex items-center gap-3 text-sm text-background/70">
