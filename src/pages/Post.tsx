@@ -1,22 +1,10 @@
 import { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom"; // <-- 1. Vi lade till Link här
-import { createClient } from "@sanity/client";
-import imageUrlBuilder from "@sanity/image-url";
+import { useParams, Link } from "react-router-dom";
+import { client, urlFor } from "../sanity"; // <-- Använder den nya filen
 import { PortableText } from "@portabletext/react";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+import { Loader2, ArrowLeft, Calendar } from "lucide-react";
 
-const client = createClient({
-  projectId: "dyulh476",
-  dataset: "production",
-  useCdn: false,
-  apiVersion: "2023-01-01",
-});
-
-const builder = imageUrlBuilder(client);
-function urlFor(source: any) {
-  return builder.image(source);
-}
+// (Du behöver inte Navbar/Footer här om de ligger i App.tsx, vilket de gör nu)
 
 export default function Post() {
   const { slug } = useParams();
@@ -28,7 +16,8 @@ export default function Post() {
         `*[slug.current == $slug][0]{
         title,
         mainImage,
-        body
+        body,
+        publishedAt
       }`,
         { slug }
       )
@@ -39,38 +28,50 @@ export default function Post() {
   if (!post)
     return (
       <div className="min-h-screen flex items-center justify-center">
-        Laddar...
+        <Loader2 className="w-8 h-8 animate-spin text-primary" />
       </div>
     );
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
-      <Navbar />
       
       <main className="flex-grow container mx-auto px-4 py-12 max-w-3xl">
         
-        {/* --- NYTT: TILLBAKA-KNAPP --- */}
-        <div className="mb-6">
+        {/* Tillbaka-knapp som går till Works istället för Hem */}
+        <div className="mb-8">
           <Link 
-            to="/" 
-            className="text-primary hover:text-primary/80 font-medium flex items-center gap-2 transition-colors"
+            to="/utforda-arbeten" 
+            className="text-muted-foreground hover:text-primary font-medium flex items-center gap-2 transition-colors inline-block"
           >
-            ← Tillbaka till startsidan
+            <ArrowLeft className="w-4 h-4" />
+            Tillbaka till alla arbeten
           </Link>
         </div>
-        {/* --------------------------- */}
 
+        {/* Stor bild högst upp */}
         {post.mainImage && (
-          <img
-            src={urlFor(post.mainImage).url()}
-            alt={post.title}
-            className="w-full h-auto rounded-lg shadow-md mb-8"
-          />
+          <div className="rounded-3xl overflow-hidden shadow-lg mb-8 aspect-video">
+             <img
+              src={urlFor(post.mainImage).width(1200).height(675).url()}
+              alt={post.title}
+              className="w-full h-full object-cover"
+            />
+          </div>
         )}
 
-        <h1 className="text-4xl font-bold mb-6 text-primary">{post.title}</h1>
+        {/* Titel och datum */}
+        <div className="mb-8">
+           <h1 className="text-4xl md:text-5xl font-serif font-bold mb-4 text-foreground">{post.title}</h1>
+           {post.publishedAt && (
+             <div className="flex items-center gap-2 text-muted-foreground">
+               <Calendar className="w-4 h-4" />
+               <time>{new Date(post.publishedAt).toLocaleDateString("sv-SE")}</time>
+             </div>
+           )}
+        </div>
 
-        <div className="prose prose-lg max-w-none text-gray-700">
+        {/* Texten från Sanity */}
+        <div className="prose prose-lg max-w-none text-muted-foreground prose-headings:font-serif prose-headings:text-foreground prose-a:text-primary">
           {post.body ? (
             <PortableText value={post.body} />
           ) : (
@@ -79,7 +80,6 @@ export default function Post() {
         </div>
       </main>
 
-      <Footer />
     </div>
   );
 }
