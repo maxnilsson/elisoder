@@ -6,6 +6,13 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Post from "./pages/Post";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
+import About from "./pages/About";
+import Works from "./pages/Works";
+import Contact from "./pages/Contact";
+
+// IMPORTERA NAVBAR OCH FOOTER HÄR:
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 const queryClient = new QueryClient();
 
@@ -13,17 +20,24 @@ const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <Toaster />
-      <Toaster /> {/* (Du hade Toaster och Sonner, det är ok) */}
+      <Toaster />
       <BrowserRouter>
+        
+        {/* LÄGG NAVBAR HÄR SÅ SYNS DEN PÅ ALLA SIDOR */}
+        <Navbar />
+
         <Routes>
           <Route path="/" element={<Index />} />
-          
-          {/* HÄR ÄR DEN NYA RADEN SOM SAKNADES: */}
+          <Route path="/om-oss" element={<About />} />
+          <Route path="/utforda-arbeten" element={<Works />} />
+          <Route path="/kontakt" element={<Contact />} />
           <Route path="/post/:slug" element={<Post />} />
-          
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
+
+        {/* LÄGG FOOTER HÄR SÅ SYNS DEN PÅ ALLA SIDOR */}
+        <Footer />
+
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>

@@ -1,65 +1,68 @@
 import { useState } from "react";
-import { Link, useLocation } from "react-router-dom"; // <-- Importera dessa
+import { Link, useLocation } from "react-router-dom";
 import { Phone, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const location = useLocation(); // <-- Kollar vilken sida vi är på
-
-  // Kollar om vi är på startsidan (exakt "/")
-  const isHomePage = location.pathname === "/";
+  const location = useLocation();
 
   const navLinks = [
-    { href: "#tjanster", label: "Tjänster" },
-    { href: "#om-oss", label: "Om oss" },
-    { href: "#omdomen", label: "Omdömen" },
+    { href: "/", label: "Hem" },
+    { href: "/utforda-arbeten", label: "Utförda Arbeten" },
+    { href: "/om-oss", label: "Om oss" },
+    { href: "/kontakt", label: "Kontakt" },
   ];
 
-  // Hjälpfunktion: Om vi är på startsidan kör vi bara "#hash", annars "/#hash"
-  const getLinkUrl = (href: string) => {
-    return isHomePage ? href : `/${href}`;
+  // En hjälpfunktion för att se om länken är aktiv (för styling)
+  const isActive = (path: string) => {
+    if (path === "/" && location.pathname !== "/") return false;
+    return location.pathname.startsWith(path);
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background border-b border-section-border">
-      <div className="container flex items-center justify-between h-16">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-background border-b border-border shadow-sm">
+      <div className="container flex items-center justify-between h-20">
         
-        {/* Logo - Nu med bild! */}
+        {/* Logo */}
         <Link to="/" className="flex items-center hover:opacity-80 transition-opacity">
           <img 
             src="/Logga.png" 
             alt="El i Söder" 
-            className="h-12 w-auto object-contain" 
+            className="h-14 w-auto object-contain" 
           />
         </Link>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
-            <a
+            <Link
               key={link.href}
-              href={getLinkUrl(link.href)} // <-- Här använder vi logiken
-              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+              to={link.href}
+              className={`text-sm font-medium transition-colors hover:text-primary ${
+                isActive(link.href) 
+                  ? "text-primary font-bold" 
+                  : "text-muted-foreground"
+              }`}
             >
               {link.label}
-            </a>
+            </Link>
           ))}
         </nav>
 
-        {/* CTA Button - Uppdaterat nummer */}
+        {/* CTA Button */}
         <div className="hidden md:block">
-          <Button asChild>
-            <a href="tel:0703992959" className="flex items-center gap-2">
+          <Button asChild className="rounded-full px-6 font-sans font-bold">
+            <a href="tel:0703992952" className="flex items-center gap-2">
               <Phone className="h-4 w-4" />
-              Ring 070-399 29 59
+              <span>070-399 29 52</span>
             </a>
           </Button>
         </div>
 
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden p-2"
+          className="md:hidden p-2 text-foreground"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           aria-label="Toggle menu"
         >
@@ -69,24 +72,25 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="md:hidden bg-background border-t border-section-border">
-          <nav className="container py-4 flex flex-col gap-4">
+        <div className="md:hidden absolute top-20 left-0 right-0 bg-background border-b border-border shadow-lg animate-accordion-down">
+          <nav className="container py-6 flex flex-col gap-4">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.href}
-                href={getLinkUrl(link.href)} // <-- Samma logik här
-                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors py-2"
+                to={link.href}
+                className={`text-lg font-medium py-2 border-b border-muted/20 ${
+                   isActive(link.href) ? "text-primary" : "text-foreground"
+                }`}
                 onClick={() => setIsMenuOpen(false)}
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
             
-            {/* Mobilknapp - Uppdaterat nummer */}
-            <Button asChild className="w-full mt-2">
-              <a href="tel:0703992959" className="flex items-center justify-center gap-2">
-                <Phone className="h-4 w-4" />
-                Ring 070-399 29 59
+            <Button asChild className="w-full mt-4 rounded-full py-6 text-lg">
+              <a href="tel:0703992952" className="flex items-center justify-center gap-2">
+                <Phone className="h-5 w-5" />
+                Ring 070-399 29 52
               </a>
             </Button>
           </nav>
