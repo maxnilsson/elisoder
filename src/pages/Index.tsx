@@ -15,11 +15,12 @@ const Index = () => {
   {/* HÄR ÄR DIN HUVUDBILD (Söder.jpg) */}
   <div className="absolute inset-0 z-0">
     <img 
-      src="/Söder.jpg" 
-      alt="Elektriker i arbete"
-      // HÄR HAR JAG LAGT TILL "object-top" PÅ SLUTET:
-      className="w-full h-full object-cover object-top"
-    />
+  src="/Söder.jpg" 
+  alt="Elektriker i arbete" 
+  /* Här ändrade jag till [center_30%] vilket betyder: 
+     Centrera i sidled, men fokusera 30% ner från toppen i höjdled. */
+  className="w-full h-full object-cover object-[center_top]"
+/>
     {/* Jag ökade mörkret lite (bg-black/50) så texten syns bra ovanpå din bild */}
     <div className="absolute inset-0 bg-black/50" /> 
   </div>
