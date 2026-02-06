@@ -8,7 +8,7 @@ const About = () => {
     <div className="min-h-screen bg-background flex flex-col">
       
       {/* --- SEKTION 1: INTRO & BILD --- */}
-      <section className="container py-16 md:py-24">
+      <section className="container pt-32 pb-16 md:py-24">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           
           {/* Vänster: Text */}
