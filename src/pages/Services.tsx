@@ -4,27 +4,27 @@ import { Button } from "@/components/ui/button";
 
 const serviceSections = [
   {
-    id: "elinstallation",
-    title: "Elinstallation",
+    id: "batteri",
+    title: "Batteri",
     intro:
-      "Vi utför nyinstallation, renovering och utbyggnad av elsystem för både villa, lägenhet och mindre företag.",
+      "Vi installerar batterilösningar som lagrar överskottsel och hjälper dig använda energi smartare över dygnet.",
     points: [
-      "Planering och montering av nya eldragningar",
-      "Byte och uppgradering av elcentral",
-      "Installation av belysning, uttag och strömbrytare",
-      "Trygg leverans enligt gällande elsäkerhetskrav",
+      "Dimensionering utifrån förbrukning och behov",
+      "Säker installation och driftsättning",
+      "Optimering för lägre effekttoppar",
+      "Genomgång av app och uppföljning av prestanda",
     ],
   },
   {
-    id: "laddboxar",
-    title: "Laddboxar",
+    id: "solceller",
+    title: "Solceller",
     intro:
-      "Vi hjälper dig med hela processen från rådgivning till färdig installation av laddlösning hemma eller i BRF.",
+      "Vi hjälper dig från planering till färdig installation av solcellssystem för villa och mindre fastigheter.",
     points: [
-      "Dimensionering efter fastighet och bil",
-      "Säker installation och konfigurering",
-      "Lastbalansering vid behov",
-      "Genomgång av app och användning efter montage",
+      "Rådgivning och projektering",
+      "Montering av paneler och växelriktare",
+      "Säker inkoppling i befintlig elanläggning",
+      "Kontroll och genomgång efter installation",
     ],
   },
   {
@@ -37,6 +37,18 @@ const serviceSections = [
       "Integration av belysning och sensorer",
       "Optimering av komfort och energiförbrukning",
       "Anpassning efter dina vardagsrutiner",
+    ],
+  },
+  {
+    id: "laddboxar",
+    title: "Laddboxar",
+    intro:
+      "Vi hjälper dig med hela processen från rådgivning till färdig installation av laddlösning hemma eller i BRF.",
+    points: [
+      "Dimensionering efter fastighet och bil",
+      "Säker installation och konfigurering",
+      "Lastbalansering vid behov",
+      "Genomgång av app och användning efter montage",
     ],
   },
 ];

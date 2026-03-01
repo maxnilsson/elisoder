@@ -94,19 +94,41 @@ const Index = () => {
             <p className="text-muted-foreground text-lg">Vi erbjuder bred kompetens inom elinstallation och service.</p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-8">
             <ServiceCard
               cardIndex={0}
-              title="Elinstallation"
-              desc="Nyinstallation, renovering och utbyggnad."
+              title="Batteri"
+              desc="Batterilösningar för lagring och smart energianvändning."
               imageSrc="/Elinstallation.jpg"
-              imageAlt="Elinstallation"
+              imageAlt="Batterilösningar"
               scrollY={scrollY}
               parallaxFactor={0.05}
-              readMoreHref="/tjanster#elinstallation"
+              readMoreHref="/tjanster#batteri"
             />
             <ServiceCard
               cardIndex={1}
+              title="Solceller"
+              desc="Installation och inkoppling av solcellssystem."
+              imageSrc="/Solcell_installation.png"
+              imageAlt="Solceller"
+              scrollY={scrollY}
+              parallaxFactor={0.04}
+              readMoreHref="/tjanster#solceller"
+              maxParallax={12}
+              imageScale={1.15}
+            />
+            <ServiceCard
+              cardIndex={2}
+              title="Smarta Hem"
+              desc="Styr belysning och värme från mobilen."
+              imageSrc="/smarthome.jpg"
+              imageAlt="Smarta hem lösningar"
+              scrollY={scrollY}
+              parallaxFactor={0.09}
+              readMoreHref="/tjanster#smarta-hem"
+            />
+            <ServiceCard
+              cardIndex={3}
               title="Laddboxar"
               desc="Säker laddning för din elbil."
               imageSrc="/zaptec.jpg"
@@ -117,16 +139,6 @@ const Index = () => {
                 imagePositionClass="object-[53%_62%] lg:object-[53%_70%] xl:object-[53%_74%] 2xl:object-[53%_78%]"
               maxParallax={10}
               imageScale={1.13}
-            />
-            <ServiceCard
-              cardIndex={2}
-              title="Smarta Hem"
-              desc="Styr belysning och värme från mobilen."
-              imageSrc="/smarthome.jpg"
-              imageAlt="Smarta hem lösningar"
-              scrollY={scrollY}
-              parallaxFactor={0.11}
-              readMoreHref="/tjanster#smarta-hem"
             />
           </div>
         </div>
