@@ -94,19 +94,22 @@ const Index = () => {
             <p className="text-muted-foreground text-lg">Vi erbjuder bred kompetens inom elinstallation och service.</p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-5 gap-8">
             <ServiceCard
-              cardIndex={0}
-              title="Batteri"
-              desc="Batterilösningar för lagring och smart energianvändning."
-              imageSrc="/Elinstallation.jpg"
-              imageAlt="Batterilösningar"
+              cardIndex={4}
+              title="Laddboxar"
+              desc="Säker laddning för din elbil."
+              imageSrc="/zaptec.jpg"
+              imageAlt="Laddbox installation"
               scrollY={scrollY}
-              parallaxFactor={0.05}
-              readMoreHref="/tjanster#batteri"
+              parallaxFactor={0.025}
+              readMoreHref="/tjanster#laddboxar"
+                imagePositionClass="object-[53%_62%] lg:object-[53%_70%] xl:object-[53%_74%] 2xl:object-[53%_78%]"
+              maxParallax={10}
+              imageScale={1.13}
             />
             <ServiceCard
-              cardIndex={1}
+              cardIndex={2}
               title="Solceller"
               desc="Installation och inkoppling av solcellssystem."
               imageSrc="/Solcell_installation.png"
@@ -118,7 +121,28 @@ const Index = () => {
               imageScale={1.15}
             />
             <ServiceCard
-              cardIndex={2}
+              cardIndex={0}
+              title="Batteri"
+              desc="Batterilösningar för lagring och smart energianvändning."
+              imageSrc="/Batteri.webp"
+              imageAlt="Batterilösningar"
+              scrollY={scrollY}
+              parallaxFactor={0.05}
+              readMoreHref="/tjanster#batteri"
+              imageScale={1.1}
+            />
+            <ServiceCard
+              cardIndex={1}
+              title="Energilösningar"
+              desc="Smarta energilösningar för ett effektivt och hållbart hem."
+              imageSrc="/Elinstallation.jpg"
+              imageAlt="Energilösningar"
+              scrollY={scrollY}
+              parallaxFactor={0.05}
+              readMoreHref="/tjanster#energilösningar"
+            />
+            <ServiceCard
+              cardIndex={3}
               title="Smarta Hem"
               desc="Styr belysning och värme från mobilen."
               imageSrc="/smarthome.jpg"
@@ -126,19 +150,6 @@ const Index = () => {
               scrollY={scrollY}
               parallaxFactor={0.09}
               readMoreHref="/tjanster#smarta-hem"
-            />
-            <ServiceCard
-              cardIndex={3}
-              title="Laddboxar"
-              desc="Säker laddning för din elbil."
-              imageSrc="/zaptec.jpg"
-              imageAlt="Laddbox installation"
-              scrollY={scrollY}
-              parallaxFactor={0.025}
-              readMoreHref="/tjanster#laddboxar"
-                imagePositionClass="object-[53%_62%] lg:object-[53%_70%] xl:object-[53%_74%] 2xl:object-[53%_78%]"
-              maxParallax={10}
-              imageScale={1.13}
             />
           </div>
         </div>

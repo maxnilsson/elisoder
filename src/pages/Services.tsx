@@ -16,6 +16,18 @@ const serviceSections = [
     ],
   },
   {
+    id: "energilösningar",
+    title: "Energilösningar",
+    intro:
+      "Vi hjälper dig att planera och bygga energilösningar som minskar förbrukning, jämnar ut effekttoppar och gör hemmet mer framtidssäkert.",
+    points: [
+      "Energigenomgång av befintlig elanläggning",
+      "Förslag på smart kombination av solceller, batteri och styrning",
+      "Praktiska åtgärder för lägre kostnader över tid",
+      "Löpande rådgivning kring optimering och drift",
+    ],
+  },
+  {
     id: "solceller",
     title: "Solceller",
     intro:
