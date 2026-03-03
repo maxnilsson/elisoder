@@ -124,12 +124,13 @@ const Index = () => {
               cardIndex={0}
               title="Batteri"
               desc="Batterilösningar för lagring och smart energianvändning."
-              imageSrc="/Batteri.webp"
+              imageSrc="/pylontech-force-h3-30kw.webp"
               imageAlt="Batterilösningar"
               scrollY={scrollY}
               parallaxFactor={0.05}
               readMoreHref="/tjanster#batteri"
-              imageScale={1.1}
+              imagePositionClass="object-[50%_25%]"
+              imageScale={0.9}
             />
             <ServiceCard
               cardIndex={1}
