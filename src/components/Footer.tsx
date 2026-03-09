@@ -64,6 +64,14 @@ const Footer = () => {
           <div className="inline-block px-4 py-2 bg-background rounded-lg border border-border">
             <span className="text-sm font-semibold text-primary">✓ Godkänd för F-skatt</span>
           </div>
+          <div className="mt-4">
+            <img
+              src="/kolla_elforetaget.png"
+              alt="Kolla elföretaget"
+              className="h-16 w-auto object-contain"
+              loading="lazy"
+            />
+          </div>
         </div>
       </div>
 
