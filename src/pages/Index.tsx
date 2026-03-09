@@ -2,12 +2,39 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { useEffect, useState } from "react";
+import Seo from "@/components/Seo";
+import SchemaMarkup from "@/components/SchemaMarkup";
 // VIKTIGT: Importera bilden från assets-mappen
 import heroVan from "@/assets/hero-van.jpg"; 
 
 const Index = () => {
   const [scrollY, setScrollY] = useState(0);
   const heroTranslateY = Math.max(-42, Math.min(42, scrollY * -0.12));
+  const localBusinessSchema = {
+    "@context": "https://schema.org",
+    "@type": "Electrician",
+    name: "El i Söder",
+    url: "https://www.elisoder.se",
+    image: "https://www.elisoder.se/Logga.png",
+    telephone: "+46-70-399-29-52",
+    email: "mailto:elisoder@outlook.com",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "Koltrastvägen 25",
+      addressLocality: "Nättraby",
+      addressCountry: "SE",
+    },
+    areaServed: ["Blekinge", "Karlskrona", "Nättraby"],
+    sameAs: ["https://www.facebook.com/p/EL-i-S%C3%B6der-100084525871865/"],
+  };
+
+  const websiteSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "El i Söder",
+    url: "https://www.elisoder.se",
+    inLanguage: "sv-SE",
+  };
 
   useEffect(() => {
     let ticking = false;
@@ -53,6 +80,14 @@ const Index = () => {
 
   return (
     <div className="min-h-screen flex flex-col bg-background">
+      <Seo
+        title="Elektriker i Blekinge"
+        description="El i Söder hjälper dig med elinstallationer, laddboxar, solceller, batterilösningar och smarta hem i Blekinge."
+        path="/"
+      />
+      <SchemaMarkup id="local-business" data={localBusinessSchema} />
+      <SchemaMarkup id="website" data={websiteSchema} />
+
       {/* --- HERO SECTION --- */}
 <section className="relative h-[100svh] flex items-center justify-center overflow-hidden">
   {/* HÄR ÄR DIN HUVUDBILD (Söder.jpg) */}

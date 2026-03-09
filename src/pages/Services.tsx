@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import Seo from "@/components/Seo";
+import SchemaMarkup from "@/components/SchemaMarkup";
 
 const serviceSections = [
   {
@@ -66,8 +68,69 @@ const serviceSections = [
 ];
 
 const Services = () => {
+  const servicesSchema = serviceSections.map((section) => ({
+    "@context": "https://schema.org",
+    "@type": "Service",
+    serviceType: section.title,
+    description: section.intro,
+    areaServed: "Blekinge",
+    provider: {
+      "@type": "Electrician",
+      name: "El i Söder",
+      url: "https://www.elisoder.se",
+    },
+    url: `https://www.elisoder.se/tjanster#${section.id}`,
+  }));
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "Erbjuder ni kostnadsfri offert?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Ja, vi erbjuder kostnadsfri offert för elarbeten, laddboxar, solceller och energilösningar.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "I vilka områden jobbar ni?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Vi utgår från Nättraby och tar uppdrag i Karlskrona med omnejd samt stora delar av Blekinge.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Kan ni hjälpa med både installation och rådgivning?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Ja, vi hjälper både med rådgivning, planering och komplett installation beroende på behov.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Arbetar ni med ROT-avdrag?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Ja, vi hanterar ROT-avdrag direkt på fakturan när arbetet uppfyller Skatteverkets villkor.",
+        },
+      },
+    ],
+  };
+
   return (
     <main className="min-h-screen bg-background">
+      <Seo
+        title="Tjänster inom el"
+        description="Läs om våra tjänster: batteri, energilösningar, solceller, smarta hem och laddboxar i Blekinge."
+        path="/tjanster"
+      />
+      <SchemaMarkup id="services" data={servicesSchema} />
+      <SchemaMarkup id="services-faq" data={faqSchema} />
+
       <section className="pt-32 pb-16 bg-secondary/30 border-b border-section-border">
         <div className="container max-w-4xl text-center">
           <h1 className="text-4xl md:text-5xl font-serif mb-6">Tjänster vi erbjuder</h1>

@@ -3,12 +3,26 @@ import { useParams, Link } from "react-router-dom";
 import { client, urlFor } from "../sanity"; // <-- Använder den nya filen
 import { PortableText } from "@portabletext/react";
 import { Loader2, ArrowLeft, Calendar } from "lucide-react";
+import Seo from "@/components/Seo";
 
 // (Du behöver inte Navbar/Footer här om de ligger i App.tsx, vilket de gör nu)
 
 export default function Post() {
   const { slug } = useParams();
   const [post, setPost] = useState<any>(null);
+
+  const extractPortableText = (value: any) => {
+    if (!Array.isArray(value)) return "";
+
+    return value
+      .flatMap((block) => {
+        if (!Array.isArray(block?.children)) return [];
+        return block.children.map((child: any) => child?.text ?? "");
+      })
+      .join(" ")
+      .replace(/\s+/g, " ")
+      .trim();
+  };
 
   useEffect(() => {
     client
@@ -34,6 +48,17 @@ export default function Post() {
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
+      <Seo
+        title={post.title ?? "Projekt"}
+        description={
+          extractPortableText(post.body).slice(0, 150) ||
+          "Projekt och utförda arbeten från El i Söder inom elinstallation, energi och smarta lösningar."
+        }
+        path={`/post/${slug ?? ""}`}
+        ogImage={post.mainImage ? urlFor(post.mainImage).width(1200).height(630).url() : undefined}
+        type="article"
+      />
+
       
       <main className="flex-grow container mx-auto px-4 py-12 max-w-3xl">
         

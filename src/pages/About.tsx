@@ -2,10 +2,17 @@ import { Link } from "react-router-dom";
 import heroVan from "@/assets/hero-van.jpg";
 import { Button } from "@/components/ui/button";
 import { CheckCircle2, Award, Users, ShieldCheck } from "lucide-react";
+import Seo from "@/components/Seo";
 
 const About = () => {
   return (
     <div className="min-h-screen bg-background flex flex-col">
+      <Seo
+        title="Om oss"
+        description="Lär känna El i Söder – behöriga elektriker med fokus på kvalitet, säkerhet och personlig service i Blekinge."
+        path="/om-oss"
+      />
+
       
       {/* --- SEKTION 1: INTRO & BILD --- */}
       <section className="container pt-32 pb-16 md:py-24">
@@ -68,12 +75,6 @@ const About = () => {
 
       {/* --- SEKTION 2: VÅRA VÄRDERINGAR --- */}
       <section className="bg-secondary/30 py-24">
-        <div className="container max-w-5xl">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-serif mb-4">Varför välja El i Söder?</h2>
-            <p className="text-muted-foreground text-lg">Tre saker vi aldrig tummar på.</p>
-          </div>
-
           <div className="grid md:grid-cols-3 gap-8">
             <ValueCard 
               icon={<ShieldCheck className="w-8 h-8 text-primary" />}
@@ -91,9 +92,7 @@ const About = () => {
               text="Inga överraskningar. Vi ger tydliga offerter och jobbar effektivt för att hålla kostnaderna nere utan att sänka kvalitén."
             />
           </div>
-        </div>
       </section>
-
     </div>
   );
 };

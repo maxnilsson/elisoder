@@ -1,14 +1,53 @@
 import { Button } from "@/components/ui/button";
 import { Phone, Mail, MapPin, Clock, Send, CheckCircle2 } from "lucide-react";
 import { useForm, ValidationError } from "@formspree/react"; // <--- 1. Importera detta
+import Seo from "@/components/Seo";
+import SchemaMarkup from "@/components/SchemaMarkup";
 
 const Contact = () => {
   // 2. Koppla ditt formulär här! 
   // Byt ut "DITT_FORMSPREE_ID" mot din kod (t.ex. "xyzkqwpb")
   const [state, handleSubmit] = useForm("maqdwape");
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "Hur snabbt kan ni återkomma?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Vi svarar normalt inom 24 timmar på vardagar.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Kan jag få offert innan ni börjar arbetet?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Ja, du kan alltid be om en kostnadsfri offert innan arbetet startar.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Vilka uppgifter ska jag skicka i formuläret?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Beskriv gärna typ av arbete, adress och önskad tidsplan så kan vi hjälpa dig snabbare.",
+        },
+      },
+    ],
+  };
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
+      <Seo
+        title="Kontakta oss"
+        description="Kontakta El i Söder för offert och rådgivning inom elinstallation, laddboxar, solceller och energilösningar i Blekinge."
+        path="/kontakt"
+      />
+      <SchemaMarkup id="contact-faq" data={faqSchema} />
+
       
       {/* --- HEADER --- */}
       {/* Här satte jag pt-32 så att rubriken hamnar nedanför menyn */}

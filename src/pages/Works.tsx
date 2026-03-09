@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { client, urlFor } from "../sanity"; // Hämtar från filen vi skapade i steg 1
 import { Loader2, ArrowRight, Calendar } from "lucide-react";
+import Seo from "@/components/Seo";
 
 // Definiera hur en Post ser ut
 interface Post {
@@ -45,6 +46,12 @@ const Works = () => {
 
   return (
     <div className="min-h-screen flex flex-col bg-background">
+      <Seo
+        title="Utförda arbeten"
+        description="Se tidigare projekt från El i Söder inom elinstallation, laddboxar, solceller och smarta hem."
+        path="/utforda-arbeten"
+      />
+
       {/* (Navbar ligger redan i App.tsx) */}
       
       <main className="flex-grow">
