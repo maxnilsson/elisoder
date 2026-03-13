@@ -1,11 +1,9 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import { client, urlFor } from "../sanity"; // <-- Använder den nya filen
+import { client, urlFor } from "../sanity";
 import { PortableText } from "@portabletext/react";
 import { Loader2, ArrowLeft, Calendar } from "lucide-react";
 import Seo from "@/components/Seo";
-
-// (Du behöver inte Navbar/Footer här om de ligger i App.tsx, vilket de gör nu)
 
 export default function Post() {
   const { slug } = useParams();
@@ -27,9 +25,11 @@ export default function Post() {
   useEffect(() => {
     client
       .fetch(
+        // 1. HÄR LADE VI TILL "gallery" I FRÅGAN:
         `*[slug.current == $slug][0]{
         title,
         mainImage,
+        gallery, 
         body,
         publishedAt
       }`,
@@ -59,10 +59,9 @@ export default function Post() {
         type="article"
       />
 
-      
       <main className="flex-grow container mx-auto px-4 py-12 max-w-3xl">
         
-        {/* Tillbaka-knapp som går till Works istället för Hem */}
+        {/* Tillbaka-knapp */}
         <div className="mb-8">
           <Link 
             to="/utforda-arbeten" 
@@ -96,15 +95,33 @@ export default function Post() {
         </div>
 
         {/* Texten från Sanity */}
-        <div className="prose prose-lg max-w-none text-muted-foreground prose-headings:font-serif prose-headings:text-foreground prose-a:text-primary">
+        <div className="prose prose-lg max-w-none text-muted-foreground prose-headings:font-serif prose-headings:text-foreground prose-a:text-primary mb-12">
           {post.body ? (
             <PortableText value={post.body} />
           ) : (
             <p className="text-gray-500 italic">Ingen text tillgänglig.</p>
           )}
         </div>
-      </main>
 
+        {/* 2. HÄR ÄR DET NYA BILDGALLERIET */}
+        {post.gallery && post.gallery.length > 0 && (
+          <div className="mt-16 pt-8 border-t border-border/50">
+            <h2 className="text-2xl font-serif font-bold mb-6 text-foreground">Fler bilder från projektet</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              {post.gallery.map((image: any, index: number) => (
+                <div key={index} className="rounded-2xl overflow-hidden shadow-md aspect-video bg-secondary group">
+                  <img
+                    src={urlFor(image).width(800).height(600).url()}
+                    alt={`${post.title} - galleribild ${index + 1}`}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+      </main>
     </div>
   );
 }

@@ -33,6 +33,24 @@ export default defineType({
         hotspot: true,
       },
     }),
+    // HÄR BÖRJAR DET NYA FÄLTET FÖR FLER BILDER
+    defineField({
+      name: 'gallery',
+      title: 'Fler bilder (Galleri)',
+      type: 'array',
+      of: [
+        {
+          type: 'image',
+          options: {
+            hotspot: true,
+          },
+        }
+      ],
+      options: {
+        layout: 'grid', // Visar bilderna i ett snyggt rutnät i Sanity Studio
+      },
+    }),
+    // HÄR SLUTAR DET NYA FÄLTET
     defineField({
       name: 'categories',
       title: 'Categories',
