@@ -10,6 +10,7 @@ import About from "./pages/About";
 import Works from "./pages/Works";
 import Contact from "./pages/Contact";
 import Services from "./pages/Services";
+import ServiceDetail from "./pages/ServiceDetail";
 
 // IMPORTERA NAVBAR OCH FOOTER HÄR:
 import Navbar from "@/components/Navbar";
@@ -30,6 +31,7 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/tjanster" element={<Services />} />
+          <Route path="/tjanster/:serviceId" element={<ServiceDetail />} />
           <Route path="/om-oss" element={<About />} />
           <Route path="/utforda-arbeten" element={<Works />} />
           <Route path="/kontakt" element={<Contact />} />

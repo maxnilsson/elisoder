@@ -1,71 +1,9 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Seo from "@/components/Seo";
 import SchemaMarkup from "@/components/SchemaMarkup";
-
-const serviceSections = [
-  {
-    id: "batteri",
-    title: "Batteri",
-    intro:
-      "Vi installerar batterilösningar som lagrar överskottsel och hjälper dig använda energi smartare över dygnet.",
-    points: [
-      "Dimensionering utifrån förbrukning och behov",
-      "Säker installation och driftsättning",
-      "Optimering för lägre effekttoppar",
-      "Genomgång av app och uppföljning av prestanda",
-    ],
-  },
-  {
-    id: "energilösningar",
-    title: "Energilösningar",
-    intro:
-      "Vi hjälper dig att planera och bygga energilösningar som minskar förbrukning, jämnar ut effekttoppar och gör hemmet mer framtidssäkert.",
-    points: [
-      "Energigenomgång av befintlig elanläggning",
-      "Förslag på smart kombination av solceller, batteri och styrning",
-      "Praktiska åtgärder för lägre kostnader över tid",
-      "Löpande rådgivning kring optimering och drift",
-    ],
-  },
-  {
-    id: "solceller",
-    title: "Solceller",
-    intro:
-      "Vi hjälper dig från planering till färdig installation av solcellssystem för villa och mindre fastigheter.",
-    points: [
-      "Rådgivning och projektering",
-      "Montering av paneler och växelriktare",
-      "Säker inkoppling i befintlig elanläggning",
-      "Kontroll och genomgång efter installation",
-    ],
-  },
-  {
-    id: "smarta-hem",
-    title: "Smarta hem",
-    intro:
-      "Vi bygger smarta lösningar för styrning av belysning, värme och energiförbrukning med fokus på enkel användning.",
-    points: [
-      "Styrning via mobil och schemaläggning",
-      "Integration av belysning och sensorer",
-      "Optimering av komfort och energiförbrukning",
-      "Anpassning efter dina vardagsrutiner",
-    ],
-  },
-  {
-    id: "laddboxar",
-    title: "Laddboxar",
-    intro:
-      "Vi hjälper dig med hela processen från rådgivning till färdig installation av laddlösning hemma eller i BRF.",
-    points: [
-      "Dimensionering efter fastighet och bil",
-      "Säker installation och konfigurering",
-      "Lastbalansering vid behov",
-      "Genomgång av app och användning efter montage",
-    ],
-  },
-];
+import { serviceSections } from "@/lib/serviceSections";
 
 const Services = () => {
   const servicesSchema = serviceSections.map((section) => ({
@@ -79,94 +17,42 @@ const Services = () => {
       name: "El i Söder",
       url: "https://www.elisoder.se",
     },
-    url: `https://www.elisoder.se/tjanster#${section.id}`,
+    url: `https://www.elisoder.se/tjanster/${section.id}`,
   }));
-
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: [
-      {
-        "@type": "Question",
-        name: "Erbjuder ni kostnadsfri offert?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Ja, vi erbjuder kostnadsfri offert för elarbeten, laddboxar, solceller och energilösningar.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "I vilka områden jobbar ni?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Vi utgår från Nättraby och tar uppdrag i Karlskrona med omnejd samt stora delar av Blekinge.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Kan ni hjälpa med både installation och rådgivning?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Ja, vi hjälper både med rådgivning, planering och komplett installation beroende på behov.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Arbetar ni med ROT-avdrag?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Ja, vi hanterar ROT-avdrag direkt på fakturan när arbetet uppfyller Skatteverkets villkor.",
-        },
-      },
-    ],
-  };
 
   return (
     <main className="min-h-screen bg-background">
       <Seo
         title="Tjänster inom el"
-        description="Läs om våra tjänster: batteri, energilösningar, solceller, smarta hem och laddboxar i Blekinge."
+        description="Välj tjänst och läs mer på en egen sida med offertmöjlighet: batteri, energilösningar, solceller, smarta hem och laddboxar i Blekinge."
         path="/tjanster"
       />
       <SchemaMarkup id="services" data={servicesSchema} />
-      <SchemaMarkup id="services-faq" data={faqSchema} />
 
       <section className="pt-32 pb-16 bg-secondary/30 border-b border-section-border">
         <div className="container max-w-4xl text-center">
           <h1 className="text-4xl md:text-5xl font-serif mb-6">Tjänster vi erbjuder</h1>
-          <p className="text-lg text-muted-foreground leading-relaxed">
-            Här kan du läsa mer om de vanligaste jobben vi hjälper våra kunder med.
-          </p>
         </div>
       </section>
 
-      <section className="py-16">
-        <div className="container space-y-10">
-          {serviceSections.map((section) => (
-            <article
-              key={section.id}
-              id={section.id}
-              className="scroll-mt-32 rounded-3xl border border-border/60 bg-card p-8 md:p-10"
-            >
-              <h2 className="text-3xl font-serif mb-4">{section.title}</h2>
-              <p className="text-muted-foreground text-lg leading-relaxed mb-6">{section.intro}</p>
+      <section className="py-16 md:py-20 bg-secondary/30">
+        <div className="container xl:max-w-[1500px]">
+          <div className="text-center mb-10 md:mb-14 max-w-2xl mx-auto">
+          </div>
 
-              <ul className="space-y-3 mb-8">
-                {section.points.map((point) => (
-                  <li key={point} className="flex items-start gap-3 text-foreground/90">
-                    <CheckCircle2 className="w-5 h-5 text-primary mt-0.5 shrink-0" />
-                    <span>{point}</span>
-                  </li>
-                ))}
-              </ul>
-
-              <Button asChild className="rounded-full px-7">
-                <Link to="/kontakt" className="inline-flex items-center gap-2">
-                  Be om offert <ArrowRight className="w-4 h-4" />
-                </Link>
-              </Button>
-            </article>
-          ))}
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-5 gap-6 md:gap-8">
+            {serviceSections.map((section, index) => (
+              <ServiceOverviewCard
+                key={section.id}
+                title={section.title}
+                desc={section.intro}
+                imageSrc={section.imageSrc}
+                imageAlt={section.imageAlt}
+                readMoreHref={`/tjanster/${section.id}`}
+                cardIndex={index}
+              />
+            ))}
+          </div>
         </div>
       </section>
     </main>
@@ -174,3 +60,39 @@ const Services = () => {
 };
 
 export default Services;
+
+const ServiceOverviewCard = ({
+  title,
+  desc,
+  imageSrc,
+  imageAlt,
+  readMoreHref,
+  cardIndex,
+}: {
+  title: string;
+  desc: string;
+  imageSrc: string;
+  imageAlt: string;
+  readMoreHref: string;
+  cardIndex: number;
+}) => {
+  return (
+    <div
+      className="group relative overflow-hidden p-7 md:p-9 xl:p-10 rounded-3xl border border-transparent hover:shadow-lg hover:-translate-y-1 transition-all duration-300 min-h-[290px] md:min-h-[340px] xl:min-h-[390px] flex flex-col justify-end"
+      style={{ transitionDelay: `${80 + cardIndex * 60}ms` }}
+    >
+      <div className="absolute inset-0" aria-hidden="true">
+        <img src={imageSrc} alt={imageAlt} className="w-full h-full object-cover object-center" />
+      </div>
+      <div className="absolute inset-0 bg-black/45" aria-hidden="true" />
+
+      <div className="relative z-10">
+        <h3 className="text-2xl font-serif mb-3 text-white">{title}</h3>
+        <p className="text-white/85 leading-relaxed line-clamp-3">{desc}</p>
+        <Button asChild variant="secondary" className="mt-5 rounded-full px-6">
+          <a href={readMoreHref}>Läs mer</a>
+        </Button>
+      </div>
+    </div>
+  );
+};

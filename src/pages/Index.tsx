@@ -89,7 +89,7 @@ const Index = () => {
       <SchemaMarkup id="website" data={websiteSchema} />
 
       {/* --- HERO SECTION --- */}
-<section className="relative h-[100svh] flex items-center justify-center overflow-hidden">
+<section className="relative min-h-[100svh] flex items-center justify-center overflow-hidden py-20 md:py-0">
   {/* HÄR ÄR DIN HUVUDBILD (Söder.jpg) */}
   <div className="absolute inset-0 z-0">
     <img 
@@ -103,18 +103,18 @@ const Index = () => {
     <div className="absolute inset-0 bg-black/50" /> 
   </div>
 
-        <div className="container relative z-10 text-center text-white max-w-4xl px-4 mt-16">
-          <h1 className="text-5xl md:text-7xl font-serif font-medium mb-6 leading-tight animate-fade-in">
+        <div className="container relative z-10 text-center text-white max-w-4xl px-4 mt-10 md:mt-16">
+          <h1 className="text-4xl sm:text-5xl md:text-7xl font-serif font-medium mb-5 md:mb-6 leading-tight animate-fade-in">
             Vi säkrar din vardag med <span className="text-primary italic">kvalitet</span>
           </h1>
-          <p className="text-lg md:text-xl text-white/90 mb-10 max-w-2xl mx-auto leading-relaxed animate-fade-in">
+          <p className="text-base sm:text-lg md:text-xl text-white/90 mb-7 md:mb-10 max-w-2xl mx-auto leading-relaxed animate-fade-in">
             Från små installationer till kompletta smarta hem. Vi hjälper dig med allt inom el.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in">
-            <Button asChild size="lg" className="rounded-full text-lg h-14 px-8 bg-primary hover:bg-primary/90 text-primary-foreground">
+          <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center animate-fade-in">
+            <Button asChild size="lg" className="rounded-full text-base md:text-lg h-12 md:h-14 px-6 md:px-8 bg-primary hover:bg-primary/90 text-primary-foreground">
               <Link to="/kontakt">Kontakta oss</Link>
             </Button>
-            <Button asChild size="lg" variant="outline" className="rounded-full text-lg h-14 px-8 bg-white/10 border-white/20 text-white hover:bg-white hover:text-black transition-colors">
+            <Button asChild size="lg" variant="outline" className="rounded-full text-base md:text-lg h-12 md:h-14 px-6 md:px-8 bg-white/10 border-white/20 text-white hover:bg-white hover:text-black transition-colors">
               <Link to="/utforda-arbeten">Se våra jobb</Link>
             </Button>
           </div>
@@ -138,7 +138,7 @@ const Index = () => {
               imageAlt="Laddbox installation"
               scrollY={scrollY}
               parallaxFactor={0.025}
-              readMoreHref="/tjanster#laddboxar"
+              readMoreHref="/tjanster/laddboxar"
                 imagePositionClass="object-[53%_62%] lg:object-[53%_70%] xl:object-[53%_74%] 2xl:object-[53%_78%]"
               maxParallax={10}
               imageScale={1.13}
@@ -151,7 +151,7 @@ const Index = () => {
               imageAlt="Solceller"
               scrollY={scrollY}
               parallaxFactor={0.04}
-              readMoreHref="/tjanster#solceller"
+              readMoreHref="/tjanster/solceller"
               maxParallax={12}
               imageScale={1.15}
             />
@@ -163,7 +163,7 @@ const Index = () => {
               imageAlt="Batterilösningar"
               scrollY={scrollY}
               parallaxFactor={0.05}
-              readMoreHref="/tjanster#batteri"
+              readMoreHref="/tjanster/batteri"
               imagePositionClass="object-[50%_25%]"
               imageScale={0.9}
             />
@@ -175,7 +175,7 @@ const Index = () => {
               imageAlt="Energilösningar"
               scrollY={scrollY}
               parallaxFactor={0.05}
-              readMoreHref="/tjanster#energilösningar"
+              readMoreHref="/tjanster/energilosningar"
             />
             <ServiceCard
               cardIndex={3}
@@ -185,7 +185,7 @@ const Index = () => {
               imageAlt="Smarta hem lösningar"
               scrollY={scrollY}
               parallaxFactor={0.09}
-              readMoreHref="/tjanster#smarta-hem"
+              readMoreHref="/tjanster/smarta-hem"
             />
           </div>
         </div>
