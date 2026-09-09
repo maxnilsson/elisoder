@@ -93,7 +93,7 @@ const Index = () => {
   {/* HÄR ÄR DIN HUVUDBILD (Söder.jpg) */}
   <div className="absolute inset-0 z-0">
     <img 
-  src="/Solcell.WebP"
+  src="/Solcell.Webp"
   /* Här ändrade jag till [center_30%] vilket betyder: 
      Centrera i sidled, men fokusera 30% ner från toppen i höjdled. */
   className="w-full h-full object-cover object-center"
