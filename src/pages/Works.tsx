@@ -9,7 +9,7 @@ interface Post {
   _id: string;
   title: string;
   slug: { current: string };
-  mainImage: any;
+  mainImage: Record<string, unknown> | null;
   publishedAt: string;
 }
 

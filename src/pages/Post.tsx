@@ -5,17 +5,27 @@ import { PortableText } from "@portabletext/react";
 import { Loader2, ArrowLeft, Calendar } from "lucide-react";
 import Seo from "@/components/Seo";
 
+import type { PortableTextBlock } from "@portabletext/types";
+
+interface SanityPost {
+  title?: string;
+  mainImage?: Record<string, unknown>;
+  gallery?: Array<Record<string, unknown>>;
+  body?: PortableTextBlock[];
+  publishedAt?: string;
+}
+
 export default function Post() {
   const { slug } = useParams();
-  const [post, setPost] = useState<any>(null);
+  const [post, setPost] = useState<SanityPost | null>(null);
 
-  const extractPortableText = (value: any) => {
+  const extractPortableText = (value?: PortableTextBlock[]) => {
     if (!Array.isArray(value)) return "";
 
     return value
       .flatMap((block) => {
         if (!Array.isArray(block?.children)) return [];
-        return block.children.map((child: any) => child?.text ?? "");
+        return block.children.map((child) => ("text" in child && typeof child.text === "string" ? child.text : ""));
       })
       .join(" ")
       .replace(/\s+/g, " ")
@@ -109,7 +119,7 @@ export default function Post() {
           <div className="mt-16 pt-8 border-t border-border/50">
             <h2 className="text-2xl font-serif font-bold mb-6 text-foreground">Fler bilder från projektet</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              {post.gallery.map((image: any, index: number) => (
+              {post.gallery.map((image, index: number) => (
                 <div key={index} className="rounded-2xl overflow-hidden shadow-md aspect-video bg-secondary group">
                   <img
                     src={urlFor(image).width(800).height(600).auto("format").url()}

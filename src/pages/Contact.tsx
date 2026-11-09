@@ -1,13 +1,19 @@
+import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Phone, Mail, MapPin, Clock, Send, CheckCircle2 } from "lucide-react";
-import { useForm, ValidationError } from "@formspree/react"; // <--- 1. Importera detta
+import { Phone, Mail, MapPin, Send, CheckCircle2 } from "lucide-react";
+import { useForm, ValidationError } from "@formspree/react";
 import Seo from "@/components/Seo";
 import SchemaMarkup from "@/components/SchemaMarkup";
+import { trackLeadSubmission } from "@/lib/analytics";
 
 const Contact = () => {
-  // 2. Koppla ditt formulär här! 
-  // Byt ut "DITT_FORMSPREE_ID" mot din kod (t.ex. "xyzkqwpb")
   const [state, handleSubmit] = useForm("maqdwape");
+
+  useEffect(() => {
+    if (state.succeeded) {
+      trackLeadSubmission("contact_form");
+    }
+  }, [state.succeeded]);
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
