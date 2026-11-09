@@ -110,11 +110,29 @@ const Contact = () => {
 
             <div className="bg-secondary/20 p-8 rounded-3xl">
               <h3 className="text-xl font-serif mb-3 flex items-center gap-2">
-                <Clock className="w-5 h-5 text-primary" /> Var jobbar vi?
+                <MapPin className="w-5 h-5 text-primary" /> Var jobbar vi?
               </h3>
               <p className="text-muted-foreground">
-                Vi utgår från Nättraby och tar uppdrag i hela Karlskrona med omnejd, samt större delar av Blekinge.
+                Vi utgår från Koltrastvägen 25 i Nättraby och tar uppdrag i hela Karlskrona med omnejd, Ronneby, Karlshamn samt övriga Blekinge.
               </p>
+            </div>
+
+            <div className="rounded-3xl border border-border/60 bg-card p-6 md:p-8 space-y-4">
+              <h3 className="text-xl font-serif">Vanliga frågor inför kontakt</h3>
+              <div className="space-y-4 text-sm">
+                <div>
+                  <p className="font-semibold text-foreground">Hur snabbt kan ni återkomma?</p>
+                  <p className="text-muted-foreground">Vi svarar normalt inom 24 timmar på vardagar.</p>
+                </div>
+                <div>
+                  <p className="font-semibold text-foreground">Kan jag få offert innan ni börjar arbetet?</p>
+                  <p className="text-muted-foreground">Ja, du kan alltid be om en kostnadsfri offert innan arbetet startar.</p>
+                </div>
+                <div>
+                  <p className="font-semibold text-foreground">Vilka uppgifter ska jag skicka i formuläret?</p>
+                  <p className="text-muted-foreground">Beskriv gärna typ av arbete, adress och önskad tidsplan så kan vi hjälpa dig snabbare.</p>
+                </div>
+              </div>
             </div>
           </div>
 

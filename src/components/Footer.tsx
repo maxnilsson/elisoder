@@ -6,23 +6,57 @@ const Footer = () => {
 
   return (
     <footer className="bg-secondary/30 border-t border-border pt-16 pb-8">
-      <div className="container grid md:grid-cols-3 gap-12 mb-12">
+      <div className="container grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
         
         {/* Kolumn 1: Logga & Info */}
         <div className="space-y-4">
           <Link to="/" className="block">
             <img 
               src="/Logga.png" 
-              alt="El i Söder" 
+              alt="El i Söder – Elektriker i Karlskrona och Blekinge" 
+              loading="lazy"
+              decoding="async"
               className="h-16 w-auto object-contain -ml-2"
             />
           </Link>
           <p className="text-muted-foreground leading-relaxed max-w-xs">
-            Din trygga partner för elinstallationer. Vi levererar kvalitet och säkerhet i varje projekt.
+            Din trygga elektriker i Karlskrona, Nättraby och hela Blekinge. Vi levererar kvalitet och elsäkerhet i varje projekt.
           </p>
         </div>
 
-        {/* Kolumn 2: Kontaktuppgifter */}
+        {/* Kolumn 2: Tjänster (Interna SEO-länkar) */}
+        <div>
+          <h3 className="font-serif text-lg font-semibold mb-4">Våra tjänster</h3>
+          <ul className="space-y-2.5 text-muted-foreground">
+            <li>
+              <Link to="/tjanster/laddboxar" className="hover:text-foreground transition-colors">
+                Installera laddbox
+              </Link>
+            </li>
+            <li>
+              <Link to="/tjanster/solceller" className="hover:text-foreground transition-colors">
+                Solceller
+              </Link>
+            </li>
+            <li>
+              <Link to="/tjanster/batteri" className="hover:text-foreground transition-colors">
+                Batterilagring
+              </Link>
+            </li>
+            <li>
+              <Link to="/tjanster/energilosningar" className="hover:text-foreground transition-colors">
+                Elinstallation & Energilösningar
+              </Link>
+            </li>
+            <li>
+              <Link to="/tjanster/smarta-hem" className="hover:text-foreground transition-colors">
+                Smarta hem & Plejd
+              </Link>
+            </li>
+          </ul>
+        </div>
+
+        {/* Kolumn 3: Kontaktuppgifter */}
         <div>
           <h3 className="font-serif text-lg font-semibold mb-4">Kontakt</h3>
           <ul className="space-y-4">
@@ -42,13 +76,13 @@ const Footer = () => {
               <MapPin className="w-5 h-5 text-primary shrink-0 mt-0.5" />
               <span>
                 Koltrastvägen 25,<br />
-                Nättraby, Sweden
+                370 24 Nättraby (Karlskrona)
               </span>
             </li>
           </ul>
         </div>
 
-        {/* Kolumn 3: Socialt & F-skatt */}
+        {/* Kolumn 4: Socialt & F-skatt */}
         <div>
           <h3 className="font-serif text-lg font-semibold mb-4">Följ oss</h3>
           <div className="flex gap-4 mb-6">
@@ -56,6 +90,7 @@ const Footer = () => {
               href="https://www.facebook.com/p/EL-i-S%C3%B6der-100084525871865/" 
               target="_blank" 
               rel="noopener noreferrer"
+              aria-label="Följ El i Söder på Facebook"
               className="w-10 h-10 rounded-full bg-background border border-border flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary transition-all"
             >
               <Facebook className="w-5 h-5" />
@@ -64,6 +99,7 @@ const Footer = () => {
               href="https://www.instagram.com/elisoder.se/"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Följ El i Söder på Instagram"
               className="w-10 h-10 rounded-full bg-background border border-border flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary transition-all"
             >
               <Instagram className="w-5 h-5" />
@@ -75,9 +111,10 @@ const Footer = () => {
           <div className="mt-4">
             <img
               src="/kolla_elforetaget.png"
-              alt="Kolla elföretaget"
+              alt="Kolla elföretaget – Elsäkerhetsverket"
               className="h-16 w-auto object-contain"
               loading="lazy"
+              decoding="async"
             />
           </div>
         </div>

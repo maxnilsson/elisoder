@@ -90,8 +90,10 @@ const Works = () => {
                   <div className="relative aspect-video overflow-hidden bg-secondary">
                     {post.mainImage ? (
                       <img
-                        src={urlFor(post.mainImage).width(800).height(450).url()}
+                        src={urlFor(post.mainImage).width(800).height(450).auto("format").url()}
                         alt={post.title}
+                        loading="lazy"
+                        decoding="async"
                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                       />
                     ) : (

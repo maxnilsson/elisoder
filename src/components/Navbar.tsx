@@ -61,6 +61,7 @@ const Navbar = () => {
           <img 
             src="/Logga.png" 
             alt="El i Söder" 
+            decoding="async"
             className={`w-auto object-contain transition-all duration-300 ${isScrolled ? "h-12" : "h-14"}`}
           />
         </Link>
